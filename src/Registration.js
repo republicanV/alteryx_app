@@ -84,7 +84,7 @@ class Registration extends Component {
         const {user} = this.state;
         const newUser = { user: user };
 
-        if (user.firstName && user.lastName && user.username && user.password) {
+        if (user.firstName && user.lastName && user.email && user.password) {
             axios.post('https://lab.lectrum.io/redux/api/user/6vf77z4hd5', newUser)
                 .then(response => {
                     console.log(response);
