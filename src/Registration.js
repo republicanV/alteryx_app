@@ -79,16 +79,20 @@ class Registration extends Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        this.setState({ submitted: true });
 
-        const newUser = { user: this.state.user };
-        axios.post('https://lab.lectrum.io/redux/api/user/6vf77z4hd5', newUser)
-            .then(response => {
-                console.log(response);
-            })
-            .catch(error => {
-                console.log(error);
-            });
+        this.setState({ submitted: true });
+        const {user} = this.state;
+        const newUser = { user: user };
+
+        if (user.firstName && user.lastName && user.username && user.password) {
+            axios.post('https://lab.lectrum.io/redux/api/user/6vf77z4hd5', newUser)
+                .then(response => {
+                    console.log(response);
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+        }
     }
 
     handleChange(e) {
